@@ -15,5 +15,9 @@ ln -s /proc/1/fd/1 /var/log/monit.log
 test -e /config/monitrc || die "Monit conf not found at: /config/monitrc"
 /usr/local/bin/monit -c /config/monitrc -t || die "Monit conf verification failed"
 
+### Set perms
+chown $(whoami):$(whoami) /config/monitrc
+chmod 600 /config/monitrc
+
 ### Run
 /usr/local/bin/monit -c /config/monitrc -I
