@@ -50,13 +50,13 @@ jobs:
         with:
           name: ${{ needs.run.outputs.run-all-opts-name }}
 
-  cleanup:
-    runs-on: self-hosted
-    environment: 'dev'
-    needs: [build, run, test]
-    if: always()
-    steps:
-      - uses: ./.github/actions/cleanup
-        with: 
-          images: monit:${{ needs.build.outputs.build-id }}
-          containers: monit-${{ needs.run.outputs.run-all-opts-name }} 
+#  cleanup:
+#    runs-on: self-hosted
+#    environment: 'dev'
+#    needs: [build, run, test]
+#    if: always()
+#    steps:
+#      - uses: ./.github/actions/cleanup
+#        with: 
+#          images: monit:${{ needs.build.outputs.build-id }}
+#          containers: monit-${{ needs.run.outputs.run-all-opts-name }} 
