@@ -16,10 +16,8 @@ test -e /config/monitrc || die "Monit conf not found at: /config/monitrc"
 /usr/local/bin/monit -c /config/monitrc -t || die "Monit conf verification failed"
 
 ### Set perms
-chown $(whoami):$(whoami) /config/monitrc
+chown $PUID:$PGID /config/monitrc
 chmod 600 /config/monitrc
-ls -la /config/monitrc
-id
 
 ### Run
 /usr/local/bin/monit -c /config/monitrc -I
