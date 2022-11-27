@@ -31,6 +31,6 @@ download_monit()
 case $(uname -m) in
   aarch64) download_monit arm64 ;;
   x86_64) download_monit x64 ;;
-  armv8l) download_monit arm32 ;;
+  armv7l) download_monit arm32 ;;
   *) die "Error: Unknown host arch: $(uname -m)" ;;
 esac
