@@ -13,9 +13,9 @@ RUN ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split \
 
 WORKDIR /opt
 RUN apt-get update && apt-get dist-upgrade -y \
-    && apt-get -y install rsync xmlstarlet curl nmap wakeonlan snmp snmp-mibs-downloader \
+    && apt-get -y install rsync xmlstarlet curl nmap wakeonlan snmp snmp-mibs-downloader bc \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* /usr/share/snmp/mibs/ietf/SNMPv2-PDU
 
 COPY root/download_monit.sh /download_monit.sh
 RUN /download_monit.sh $MONIT_DOWNLOAD_URL
