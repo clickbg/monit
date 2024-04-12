@@ -9,7 +9,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split \
     && ln -s /usr/bin/dpkg-deb /usr/sbin/dpkg-deb \
     && ln -s /bin/rm /usr/sbin/rm \
-    && ln -s /bin/tar /usr/sbin/tar \
+    && ln -s /bin/tar /usr/sbin/tar 
 
 WORKDIR /opt
 RUN apt-get update && apt-get dist-upgrade -y \
