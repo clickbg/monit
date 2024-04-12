@@ -13,14 +13,13 @@ test -e /config/monitrc || die "Monit conf not found at: /config/monitrc"
 ### Add user to passwd since monit fails to start if its user isn't present
 USERID="${PUID:-1000}"
 GROUPID="${GUID:-1000}"
-useradd -M -s /sbin/nologin -u $USERID -U -d /nonexistent monit || die "Failed to add user monit with PUID:$USERID and group with GUID:$GROUPID"
+useradd -M -s /sbin/nologin -u $USERID -U -d /nonexistent monit >/dev/null 2>&1 || true
 
 ### Setup logging
-chown monit:monit /run
-chown monit:monit /dev/stdout
 ln -s /dev/stdout /var/log/monit.log
 
 ### Set perms
+chown monit:monit /run /proc/1/fd/1 /dev/stdout /var/log/monit.log
 chown monit:monit /config/monitrc
 chmod 600 /config/monitrc
 chown monit:monit /usr/local/bin/monit
