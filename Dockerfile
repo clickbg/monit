@@ -13,7 +13,7 @@ RUN ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split \
 
 WORKDIR /opt
 RUN apt-get update && apt-get dist-upgrade -y \
-    && apt-get -y install rsync xmlstarlet curl nmap wakeonlan \
+    && apt-get -y install rsync xmlstarlet curl nmap wakeonlan snmp \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
