@@ -16,13 +16,12 @@ GROUPID="${GUID:-1000}"
 useradd -M -s /sbin/nologin -u $USERID -U -d /nonexistent monit >/dev/null 2>&1 || true
 
 ### Setup logging
+rm -f /var/log/monit.log >/dev/null 2>&1 || true
 ln -s /dev/stdout /var/log/monit.log
 
 ### Set perms
-chown monit:monit /run /proc/1/fd/1 /dev/stdout /var/log/monit.log
-chown monit:monit /config/monitrc
+chown monit:monit /run /proc/1/fd/1 /dev/stdout /var/log/monit.log /config/monitrc /usr/local/bin/monit
 chmod 600 /config/monitrc
-chown monit:monit /usr/local/bin/monit
 chmod 700 /usr/local/bin/monit
 
 ### Check monit conf
