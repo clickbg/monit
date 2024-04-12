@@ -21,7 +21,8 @@ download_monit()
  curl -L -o monit-$ARCH.tar.gz ${MONIT_URL/ARCH/$ARCH}
  tar xf monit-$ARCH.tar.gz --wildcards --no-anchored 'monit'
  cp -p ./monit-*/bin/monit $MONIT_BIN
- chmod 755 $MONIT_BIN
+ chown 1000:1000 $MONIT_BIN
+ chmod 700 $MONIT_BIN
  EXIT=$?
  rm -rf monit-*
  return $EXIT

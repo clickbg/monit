@@ -9,9 +9,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split \
     && ln -s /usr/bin/dpkg-deb /usr/sbin/dpkg-deb \
     && ln -s /bin/rm /usr/sbin/rm \
-    && ln -s /bin/tar /usr/sbin/tar 
+    && ln -s /bin/tar /usr/sbin/tar \
+    && ln -s /proc/1/fd/1 /var/log/monit.log
 
-RUN  ln -s /proc/1/fd/1 /var/log/monit.log
+RUN useradd -M -s /sbin/nologin -u 1000 -U -d /nonexistent monit
 
 WORKDIR /opt
 RUN apt-get update && apt-get dist-upgrade -y \
