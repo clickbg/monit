@@ -11,6 +11,8 @@ RUN ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split \
     && ln -s /bin/rm /usr/sbin/rm \
     && ln -s /bin/tar /usr/sbin/tar 
 
+RUN  ln -s /proc/1/fd/1 /var/log/monit.log
+
 WORKDIR /opt
 RUN apt-get update && apt-get dist-upgrade -y \
     && apt-get -y install rsync xmlstarlet curl nmap wakeonlan \
