@@ -3,16 +3,12 @@
 ###############################################################################
  set daemon  600           # check services at 10-minute intervals
      with start delay 600  # optional: delay the first check by 10-minutes
-
- set logfile /var/log/monit.log
-
- set idfile /run/.monit.id
-
- set statefile /run/.monit.state
-
+ set log /var/log/monit.log
+ set idfile /config/monit.id
+ set statefile /config/monit.state
  set eventqueue
-     basedir /tmp        # set the base directory where events will be stored
-     slots 100           # optionally limit the queue size
+     basedir /config/eventqueue        # set the base directory where events will be stored
+     slots 100                         # optionally limit the queue size
 
  set terminal batch
 
