@@ -26,6 +26,7 @@ The container is based on the latest Ubuntu LTS with Monit compiled from https:/
 - ripgrep
 - netcat-openbsd
 - arping
+- dnsutils
 
 If you need some other utility please file a bug.
 
