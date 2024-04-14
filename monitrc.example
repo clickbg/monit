@@ -1,7 +1,7 @@
 ###############################################################################
 ## Monit control file
 ###############################################################################
- set daemon  600           # check services at 10-minute intervals
+ set daemon  120           # check services at 2-minute intervals
      with start delay 600  # optional: delay the first check by 10-minutes
  set log /var/log/monit.log
  set idfile /config/monit.id
@@ -12,12 +12,9 @@
 
  set terminal batch
 
- set httpd UNIXSOCKET /run/monit.sock PERMISSION 600
-#     SSL ENABLE
-#     PEMFILE /etc/monit.d/monit.pem
-#     use address 127.0.0.1
-     allow 127.0.0.1        # allow localhost to connect to the server and
-#     allow admin:monit      # require user 'admin' with password 'monit'
-#     allow @root           # allow users of group 'monit' to connect (rw)
-#     allow @users readonly  # allow users of group 'users' to connect readonly
-
+# Remote access
+ set httpd port 2812
+     allow 127.0.0.1
+     allow 172.16.0.0/12
+     allow 10.0.0.0/8
+     allow 192.168.0.0/16
