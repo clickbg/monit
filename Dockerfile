@@ -13,7 +13,7 @@ RUN ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split \
 
 WORKDIR /opt
 RUN apt-get update && apt-get dist-upgrade -y \
-    && apt-get -y install rsync xmlstarlet curl nmap wakeonlan snmp snmp-mibs-downloader bc tzdata \
+    && apt-get -y install rsync xmlstarlet curl nmap wakeonlan snmp snmp-mibs-downloader bc tzdata tcptraceroute jq iperf3 ripgrep netcat-openbsd arping \
     && apt-get clean \
     && ln -fs /usr/share/zoneinfo/UTC /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \

@@ -8,6 +8,27 @@ Barking at daemons, from Docker
 
 Monit monitoring in Docker container. 
 
+Monit monitoring in Docker container. 
+The container is based on the latest Ubuntu LTS with Monit compiled from https://mmonit.com/monit/ 
+
+**Included tools**
+--
+- nmap
+- rsync
+- xmlstarlet
+- curl
+- wakeonlan
+- snmp
+- bc
+- jq
+- tcptraceroute
+- iperf3
+- ripgrep
+- netcat-openbsd
+- arping
+
+If you need some other utility please file a bug.
+
 **Usage**
 --
 Run:
