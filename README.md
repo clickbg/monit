@@ -12,7 +12,7 @@ Monit monitoring in Docker container.
 --
 Run:
 
-    docker run --rm -d -p 8080:8080 --name monit -v /home/git/monitrc.example:/config/monitrc clickbg/monit:latest
+    docker run --rm -d -p 2812:2812 --name monit -v /home/git/monitrc.example:/config/monitrc clickbg/monit:latest
 
 Compose:
 
@@ -23,7 +23,7 @@ Compose:
       volumes:
         - ${CONFDIR}/monit:/config
       ports:
-        - "8080:8080"
+        - "2812:2812"
       environment:
         - PUID=1000
         - PGID=1000
