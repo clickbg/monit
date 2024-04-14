@@ -1,4 +1,5 @@
 #!/bin/bash
+set -a
 
 # Exit with error function
 die()
@@ -9,6 +10,9 @@ die()
 
 ### Test if monitrc exists
 test -e /config/monitrc || die "Monit conf not found at: /config/monitrc"
+
+### Timezon
+TZ="${TZ:-UTC}"
 
 ### Add user to passwd since monit fails to start if its user isn't present
 USERID="${PUID:-1000}"
@@ -27,7 +31,7 @@ chmod 600 /config/monitrc
 chmod 700 /usr/local/bin/monit
 
 ### Check monit conf
-su -l monit --command '/usr/local/bin/monit -c /config/monitrc -t' || die "Monit conf verification failed"
+su monit --command '/usr/local/bin/monit -c /config/monitrc -t' || die "Monit conf verification failed"
 
 ### Run as non-root user
-exec su -l monit --command '/usr/local/bin/monit -c /config/monitrc -p /tmp/monit.pid -I'
+exec su monit --command '/usr/local/bin/monit -c /config/monitrc -p /tmp/monit.pid -I'
