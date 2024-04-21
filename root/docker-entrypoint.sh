@@ -30,6 +30,9 @@ chown monit:monit /config/monitrc /usr/local/bin/monit
 chmod 600 /config/monitrc
 chmod 700 /usr/local/bin/monit
 
+### Link monitrc to a known location
+ln -s /config/monitrc /etc/monitrc
+
 ### Check monit conf
 su monit --command '/usr/local/bin/monit -c /config/monitrc -t' || die "Monit conf verification failed"
 

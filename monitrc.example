@@ -12,6 +12,10 @@
 
  set terminal batch
 
+# Local access
+ set httpd UNIXSOCKET /run/monit.sock
+     allow monit:monitpasswordverysecure
+
 # Remote access
  set httpd port 2812
      allow 127.0.0.1
