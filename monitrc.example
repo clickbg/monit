@@ -1,24 +1,33 @@
 ###############################################################################
 ## Monit control file
 ###############################################################################
- set daemon  120           # check services at 2-minute intervals
-     with start delay 600  # optional: delay the first check by 10-minutes
- set log /var/log/monit.log
+ set daemon 120
+ set pidfile /tmp/monit.pid
  set idfile /config/monit.id
  set statefile /config/monit.state
  set eventqueue
-     basedir /config/eventqueue        # set the base directory where events will be stored
-     slots 100                         # optionally limit the queue size
-
+     basedir /config/eventqueue/        # set the base directory where events will be stored
+     slots 100                        # optionally limit the queue size
+ set alert ALERT@DOMAIN.COM not on { instance } with REMINDER on 720 cycles # receive all alerts with reminder on every 24h
  set terminal batch
 
-# Local access
- set httpd UNIXSOCKET /run/monit.sock
-     allow monit:monitpasswordverysecure
+# Email settings
+ set mailserver SERVER port 587
+   username "USER" password "PASSWORD"
+   using tls
+
+ set mail-format {
+   from: MONIT@DOMAIN.COM
+   subject: [$HOST] [$SERVICE] monit alert -- $EVENT at $DATE
+ }
 
 # Remote access
  set httpd port 2812
+     address 127.0.0.1
      allow 127.0.0.1
      allow 172.16.0.0/12
      allow 10.0.0.0/8
      allow 192.168.0.0/16
+
+# Monitors
+ include /config/conf/*.conf
