@@ -6,7 +6,7 @@
  set idfile /tmp/monit.id
  set statefile /tmp/monit.state
  set eventqueue
-     basedir /tmp/        # set the base directory where events will be stored
+     basedir /config/eventqueue/       # set the base directory where events will be stored
      slots 100                         # optionally limit the queue size
 
  set terminal batch

@@ -17,7 +17,15 @@ TZ="${TZ:-UTC}"
 ### Add user to passwd since monit fails to start if its user isn't present
 USERID="${PUID:-1000}"
 GROUPID="${GUID:-1000}"
-useradd -M -s /bin/bash -u $USERID -U -d /config/ monit >/dev/null 2>&1 || true
+
+if id $USERID; then
+	usermod  -l monit $(grep $USERID /etc/passwd | cut -d ':' -f1)
+        groupmod -n monit $(grep $GROUPID /etc/group | cut -d ':' -f1)
+	usermod -aG tty monit
+else
+        useradd -M -s /bin/bash -u $USERID -U -d /config/ monit >/dev/null 2>&1 || true
+        usermod -aG tty monit
+fi
 
 ### Setup logging
 rm -f /var/log/monit.log >/dev/null 2>&1 || true
