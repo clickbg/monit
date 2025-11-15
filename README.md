@@ -2,8 +2,8 @@
 # [Monit](https://mmonit.com/monit/) in Docker
 Barking at daemons, from Docker
 --
-[![CICD](https://github.com/clickbg/monit/workflows/CICD/badge.svg?branch=main)](https://github.com/clickbg/monit/actions/workflows/cicd.yaml)
-[![UPDATE](https://github.com/clickbg/monit/workflows/UPDATE/badge.svg?branch=main)](https://github.com/clickbg/monit/actions/workflows/update.yaml)
+[![CICD](https://github.com/clickbg/monit/workflows/CICD/badge.svg)](https://github.com/clickbg/monit/actions/workflows/cicd.yaml)
+[![UPDATE](https://github.com/clickbg/monit/workflows/UPDATE/badge.svg)](https://github.com/clickbg/monit/actions/workflows/update.yaml)
 [![PUBLISH](https://github.com/clickbg/monit/workflows/PUBLISH/badge.svg)](https://github.com/clickbg/monit/actions/workflows/publish.yaml)
 
 Monit monitoring in Docker container. 
