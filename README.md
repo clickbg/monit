@@ -6,6 +6,8 @@ Barking at daemons, from Docker
 [![UPDATE](https://github.com/clickbg/monit/workflows/UPDATE/badge.svg)](https://github.com/clickbg/monit/actions/workflows/update.yaml)
 [![PUBLISH](https://github.com/clickbg/monit/workflows/PUBLISH/badge.svg)](https://github.com/clickbg/monit/actions/workflows/publish.yaml)
 
+<img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" width="20" height="20"> [Avaliable on DockerHub](https://hub.docker.com/r/clickbg/wait)
+
 Monit monitoring in Docker container. 
 
 Monit monitoring in Docker container. 
