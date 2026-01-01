@@ -11,7 +11,7 @@ Barking at daemons, from Docker
 Monit monitoring in Docker container. 
 
 Monit monitoring in Docker container. 
-The container is based on the latest Ubuntu LTS with Monit compiled from https://mmonit.com/monit/ 
+The container is based on the latest Debian LTS with Monit compiled from https://mmonit.com/monit/ 
 
 **Included tools**
 --
