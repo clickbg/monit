@@ -23,6 +23,8 @@ The container is based on the latest Ubuntu LTS with Monit compiled from https:/
 - snmp
 - bc
 - jq
+- yq
+- xq
 - tcptraceroute
 - iperf3
 - ripgrep
