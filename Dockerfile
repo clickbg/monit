@@ -1,6 +1,6 @@
-ARG UBUNTU_VERSION
+ARG DEBIAN_VERSION
 
-FROM ubuntu:${UBUNTU_VERSION}
+FROM debian:${DEBIAN_VERSION}
 
 ARG MONIT_DOWNLOAD_URL
 
@@ -12,7 +12,8 @@ RUN ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split \
     && ln -s /bin/tar /usr/sbin/tar 
 
 WORKDIR /opt
-RUN apt-get update && apt-get dist-upgrade -y \
+RUN sed -i 's/Components: main/Components: main contrib non-free non-free-firmware/g' /etc/apt/sources.list.d/debian.sources \
+    && apt-get update && apt-get dist-upgrade -y \  
     && apt-get -y install rsync xmlstarlet curl nmap wakeonlan snmp snmp-mibs-downloader bc tzdata tcptraceroute jq xq yq iperf3 ripgrep netcat-openbsd arping dnsutils \
     && apt-get clean \
     && ln -fs /usr/share/zoneinfo/UTC /etc/localtime \
